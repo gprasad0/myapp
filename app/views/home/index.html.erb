@@ -1,0 +1,17 @@
+<div class="container">
+    <% @questions.each do |q|%>
+        <div class="media">
+            <img class="mr-3" src="https://images.pexels.com/photos/1708489/pexels-photo-1708489.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Generic placeholder image" width=80>
+                <div class="media-body">
+                        <h5 class="mt-0"><%= q.email %> asked:</h5>
+                            <%= time_ago_in_words q.created_at %> ago<br>
+                            <%= q.body%>
+                        <button><a href="<%= question_path(q)%>">View answers</a></button>
+                </div>
+        </div>
+    <%end%>
+
+    <%if @questions.empty? %>
+    <div class="alert alert-info">Nothing here yet?Be the first one to ask</div>
+    <% end %>
+</div>

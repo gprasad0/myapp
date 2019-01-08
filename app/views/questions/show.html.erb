@@ -1,0 +1,30 @@
+<div class="container">
+<div class="media">
+  <img class="mr-3" src="https://images.pexels.com/photos/1708489/pexels-photo-1708489.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Generic placeholder image" width=80>
+  <div class="media-body">
+    <h5 class="mt-0"><%= @question.email %> asked:</h5>
+    <%= @question.body %>
+  </div>
+</div>
+<button  data-toggle="modal" data-target="#example1Modal">SUBMIT NEW ANSWER</button>
+
+<%= render "home/modal_answer_button_form.html.erb" %>
+
+<div class="container">
+  <% @answers.each do |answer| %>
+      <div class="media">
+          <img class="mr-3" src="https://images.pexels.com/photos/1708489/pexels-photo-1708489.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Generic placeholder image" width=80>
+              <div class="media-body">
+                <h5 class="mt-0"><%= answer.email %> asked:</h5>
+                <%= time_ago_in_words answer.created_at %> ago<br>
+                <%= answer.body %>
+              </div>
+      </div>
+  <% end %>
+
+  <%if @answers.empty? %>
+  <div class="alert alert-info">BE the first to submit an answer</div>
+  <%end%>
+</div>
+  
+</div>
